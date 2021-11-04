@@ -2,7 +2,7 @@
   <main class="post">
 
     <div class="post-info">
-      <p>
+      <!-- <p>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
           <circle cx="12" cy="12" r="10"></circle>
           <polyline points="12 6 12 12 16 14"></polyline>
@@ -14,7 +14,7 @@
               <a href="{{ .Permalink }}"><span class="flag flag-icon flag-icon-{{ index $.Site.Data.langFlags (.Lang) }} flag-icon-squared"></span></a>
           {{ end}}
         {{ end }}
-      </p>
+      </p> -->
     </div>
 
     <article>
@@ -24,6 +24,15 @@
 
       {{ with .Params.Description }}
         <div class="post-excerpt">{{ . }}</div>
+      {{ end }}
+
+      {{ if .Params.Authors }}
+        <div class="post-authors">
+          {{ range $index, $author := .Params.Authors -}}
+            {{ if $index }}, {{ end }}
+            {{ $author }}
+          {{ end }}
+        </div>
       {{ end }}
 
       {{ if .Params.Cover }}
@@ -107,7 +116,7 @@
             <line x1="17.01" y1="12" x2="22.96" y2="12"></line>
           </svg>
 
-          <a href="{{ .Site.Params.gitUrl -}}{{ .GitInfo.Hash }}" target="_blank" rel="noopener">{{ .GitInfo.AbbreviatedHash }}</a>
+          <span href="{{ .Site.Params.gitUrl -}}{{ .GitInfo.Hash }}" target="_blank" rel="noopener">{{ .GitInfo.AbbreviatedHash }}</span>
           @ {{ if .Site.Params.dateformNum }}{{ dateFormat .Site.Params.dateformNum .GitInfo.AuthorDate.Local }}{{ else }}{{ dateFormat "2006-01-02" .GitInfo.AuthorDate.Local }}{{ end }}
         </p>
       {{- end }}
