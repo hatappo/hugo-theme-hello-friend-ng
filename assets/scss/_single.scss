@@ -54,7 +54,27 @@
   }
 
   &-excerpt {
-    color: grey;
+    // Original
+    // color: grey;
+    // Default
+    color: $light-color;
+
+    @media (prefers-color-scheme: dark) {
+      color: $dark-color;
+    }
+
+    @media (prefers-color-scheme: light) {
+      color: $light-color;
+    }
+
+    [data-theme=dark] & {
+      color: $dark-color;
+    }
+
+    [data-theme=light] & {
+      color: $light-color;
+    }
+
     font-style: italic;
   }
 
@@ -129,26 +149,26 @@
       z-index: 1;
       // Default
       background: $light-background;
-      color: $light-color-secondary;
+      color: $light-color;
 
       @media (prefers-color-scheme: dark) {
         background: $dark-background;
-        color: $dark-color-secondary;
+        color: $dark-color;
       }
     
       @media (prefers-color-scheme: light) {
         background: $light-background;
-        color: $light-color-secondary;
+        color: $light-color;
       }
     
       [data-theme=dark] & {
         background: $dark-background;
-        color: $dark-color-secondary;
+        color: $dark-color;
       }
     
       [data-theme=light] & {
         background: $light-background;
-        color: $light-color-secondary;
+        color: $light-color;
       }
     }
 
